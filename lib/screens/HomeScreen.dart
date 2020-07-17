@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_moor_sqlite/db/my_database.dart';
 import 'package:flutter_moor_sqlite/screens/AddTodo.dart';
 
-///https://pub.dev/packages/moor_flutter
-///https://www.youtube.com/watch?v=ATNJ7g-y-wo - SQL reativo
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,12 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
         stream: MyDatabase.instance.getAllTodos(),
         initialData: [],
         builder: (context, snapshot) {
-          //Streambuilder vai receber aquele metodo getAllTodos
+     
           List<Todo> list = snapshot.data;
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
-              return ListTile( //Retornar os itens da lista em forma de ListTile
+              return ListTile( 
                 leading: IconButton(icon: Icon(Icons.delete), onPressed: () {
                   MyDatabase.instance.deleteTodo(list[index].id);
                 },),
